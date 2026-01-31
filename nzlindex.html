@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitio privado</title>  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(0,0,0,0.65);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 { margin-top: 0; text-align: center; }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button {
+      cursor: pointer;
+      background: #4fc3f7;
+      font-weight: bold;
+    }
+
+    button:hover { opacity: 0.9; }
+
+    .error { color: #ff6b6b; margin-top: 10px; text-align: center; }
+
+    #content { display: none; }
+
+    .content-box {
+      line-height: 1.6;
+    }
+  </style></head>
+<body>  <!-- LOGIN -->  <div class="card" id="login">
+    <h1>Acceso</h1>
+    <p style="text-align:center">Introduce la contraseña</p>
+    <input type="password" id="password" placeholder="Contraseña" onkeydown="if(event.key==='Enter')check()">
+    <button onclick="check()">Entrar</button>
+    <div class="error" id="error"></div>
+  </div>  <!-- CONTENIDO -->  <div class="card" id="content">
+    <h1>Contenido privado</h1>
+    <div class="content-box">
+      <p>
+        Este es el contenido que tú, como creador del sitio, decides mostrar.
+      </p>
+      <p>
+        Aquí puede ir texto, información, instrucciones o lo que quieras.
+      </p>
+      <p>
+        Más adelante podrás subir archivos a GitHub y enlazarlos desde aquí.
+      </p>
+    </div>
+  </div>  <script>
+    var PASSWORD = "1234"; // cambia esto
+
+    function check() {
+      var input = document.getElementById('password').value;
+      var error = document.getElementById('error');
+
+      if (input === PASSWORD) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        error.textContent = '';
+      } else {
+        error.textContent = 'Contraseña incorrecta';
+      }
+    }
+  </script></body>
+</html>
